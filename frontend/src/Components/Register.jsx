@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
 import {AuthService} from '../service/AuthService'
-
+import { Redirect } from "react-router-dom"
 export class Register extends Component{
     constructor(props){
         super(props);
@@ -15,7 +15,8 @@ export class Register extends Component{
           hasLoginFailed: false,
           showSuccessMessage: false,
           confirmPasswordMatch: false,
-          usernameUsed: false
+          usernameUsed: false,
+          redirect: null
         }
         console.log(this.state.password !== this.state.confirm)
     }
@@ -32,13 +33,17 @@ export class Register extends Component{
     checkUsername() {
         if(this.state.username !== ''){
             var name = {username: this.state.username}
+            var res;
             AuthService("check", name).then(res => {
                 if(res === 'Username already existed'){
                     this.setState({usernameUsed : true})
                 }
+                else{
+                  this.setState({usernameUsed: false})
+                }
             })
             return( this.state.usernameUsed)
-        } 
+        }
     }
 
     checkConfirm() {
@@ -59,12 +64,15 @@ export class Register extends Component{
             })
             .then(res => {
                 if(res === "Registered successfully"){
-                    window.location.href = "http://localhost:8080/hieu/all"
+                    this.setState({redirect: "Login"})
                 }
             })
         }
     }
     render(){
+        if(this.state.redirect){
+          return <Redirect to={this.state.redirect} />
+        }
         return <div className="base-container">
           <div className="header"> Register</div>
           <div> <img className="image" src="../../public/rose.png" alt=''/> </div>
@@ -81,11 +89,11 @@ export class Register extends Component{
                 </div>}
               <div className="form-group">
                 <label htmlFor="password">Password</label>
-                <input type="text" name="password" value={this.state.password} onChange={this.handleChange}/>
+                <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
               </div>
               <div className="form-group">
                 <label htmlFor="confirm">Confirm password</label>
-                <input type="text" name="confirm" value={this.state.confirm} onChange={this.handleChange}/>
+                <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange}/>
                 {(this.checkConfirm()) && <div className="col-sm-3">
                      <small id="passwordHelp" className="text-danger">
                             Password does not match. 
