@@ -13,20 +13,3 @@ export function AuthService(type, userData) {
           })
     ) 
 }
-
-// return new Promise((resolve, reject) =>{
-//     console.log(userData);
-//     fetch(BaseURL, {
-//         method: 'POST',
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(userData)
-//       })
-//       .then((response) => (response))
-//       .then((res) => {
-//         resolve(res);
-//       })
-//       .catch((error) => {
-//         reject(error);
-//       });

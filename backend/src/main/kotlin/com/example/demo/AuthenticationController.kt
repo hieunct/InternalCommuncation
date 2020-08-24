@@ -1,8 +1,9 @@
 package com.example.demo
 
-import com.example.dataMongoDB.AuthService
-import com.example.dataMongoDB.Authentication
+import com.example.dataMongoDB.Service.AuthService
+import com.example.dataMongoDB.Schema.Authentication
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.annotation.Id
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.http.ResponseEntity
@@ -30,7 +31,8 @@ class AuthenticationController {
     @PostMapping("/signin")
     fun getID(@RequestBody auth: Authentication) : String{
         return if(authService.authenticate(auth.username!!, auth.password!!)){
-            authService.findByUsername(auth.username).id
+
+            authService.findByUsername(auth.username).id.toString()
         }
         else return "Wrong Username or Password"
     }

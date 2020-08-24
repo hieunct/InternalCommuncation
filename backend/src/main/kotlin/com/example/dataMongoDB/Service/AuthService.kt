@@ -1,7 +1,6 @@
-package com.example.dataMongoDB
+package com.example.dataMongoDB.Service
 
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Service
+import com.example.dataMongoDB.Schema.Authentication
 
 interface AuthService {
     fun findAllUser() : List<Authentication>

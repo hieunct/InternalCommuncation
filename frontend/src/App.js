@@ -23,15 +23,14 @@ class App extends React.Component{
     return (
       <Router>
       <div>
-        
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/signup">
             <Register />
           </Route>
           <Route path="/">
+            <Login />
+          </Route>
+          <Route path="/login">
             <Login />
           </Route>
         </Switch>

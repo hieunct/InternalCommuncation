@@ -1,5 +1,6 @@
-package com.example.dataMongoDB
-
+package com.example.dataMongoDB.Schema
+import org.bson.types.ObjectId;
+import org.omg.CORBA.Object
 import org.springframework.data.annotation.Id
 
 
@@ -11,7 +12,7 @@ data class Authentication(val username: String?) {
 
 
     @Id
-    lateinit var id : String
+    lateinit var id : ObjectId
     override fun toString(): String {
         return "$username + /n + $password"
     }

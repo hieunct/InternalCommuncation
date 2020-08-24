@@ -1,10 +1,13 @@
-package com.example.dataMongoDB
+package com.example.dataMongoDB.Implementation
 
+import com.example.dataMongoDB.Repository.AuthRepo
+import com.example.dataMongoDB.Schema.Authentication
+import com.example.dataMongoDB.Service.AuthService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class AuthServiceImpl : AuthService{
+class AuthServiceImpl : AuthService {
     @Autowired
     lateinit var authRepo : AuthRepo
     override fun findAllUser(): List<Authentication> = authRepo.findAll()
