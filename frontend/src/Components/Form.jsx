@@ -6,7 +6,7 @@ export class Form extends Component {
   render() {
     return (
       <Container>
-        <Row style={{color: "pink"}, {fontFamily: "'Fira Sans', sans-serif"}, {alignItems:"center"}}>
+        <Row style={{color: "pink"}, {fontFamily: "'Fira Sans', sans-serif"}, {textAlign:"center"}}>
             <h1 style={{color: "pink", textAlign: "center"}}>Hello</h1>
         </Row>
       </Container>

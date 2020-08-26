@@ -3,9 +3,10 @@ import logo from "./logo.svg";
 import { Login } from "./Components/index";
 import { Register } from "./Components/index";
 import { Form } from "./Components/index";
+import {UserHome} from "./Components/index"
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
 class App extends React.Component {
   constructor(props) {
@@ -17,24 +18,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <div>
           <Switch>
-            <Route exact path="/">
-              <Login />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/signup">
-              <Register />
-            </Route>
-            <Route path="/form">
-              <Form />
-            </Route>
+            <Route path="/user/:id" exact component={UserHome} />
+            <Route path="/form" component={Form}/>
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Register}/>
           </Switch>
         </div>
-      </Router>
+      </BrowserRouter>
     );
   }
 }

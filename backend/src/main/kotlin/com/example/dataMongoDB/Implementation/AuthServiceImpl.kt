@@ -3,6 +3,7 @@ package com.example.dataMongoDB.Implementation
 import com.example.dataMongoDB.Repository.AuthRepo
 import com.example.dataMongoDB.Schema.Authentication
 import com.example.dataMongoDB.Service.AuthService
+import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -26,5 +27,9 @@ class AuthServiceImpl : AuthService {
         } else {
             false
         }
+    }
+
+    override fun findById(Id: ObjectId): Authentication {
+        return authRepo.findById(Id)
     }
 }
