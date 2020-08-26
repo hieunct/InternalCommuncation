@@ -70,20 +70,14 @@ export class Register extends Component {
       return <Redirect to={this.state.redirect} />;
     }
     return (
-      <div>
+      <body>
         <nav>
           <ul>
-            <li>
               <Link to="/login">Log In</Link>
-            </li>
           </ul>
         </nav>
-        <div className="base-container">
+        <div className="container-fluid">
           <div className="header"> Register</div>
-          <div>
-            {" "}
-            <img className="image" src="../../public/rose.png" alt="" />{" "}
-          </div>
           <div className="content">
             <div className="form">
               <div className="form-group">
@@ -135,7 +129,7 @@ export class Register extends Component {
             </button>
           </div>
         </div>
-      </div>
+      </body>
     );
   }
 }
