@@ -7,7 +7,8 @@ import { makeStyles } from "@material-ui/core/styles";
 export class UserHome extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
+    console.log(props);
+    this.userinfo = this.userinfo.bind(this);
     this.state = {
       name: "",
       email: "",
@@ -28,7 +29,25 @@ export class UserHome extends Component {
     }));
   }
 
+  userinfo () {
+    AuthService(`/user/${this.props.match.params.id}`, "")
+      .then((result) => {
+        console.log(result);
+        return result;
+      })
+      .then((res) => {
+        if (res !== "Wrong Username or Password") {
+          //window.location.href = "http://localhost:8080/hieu/all";
+          var info = (JSON.parse(res))
+          //this.setState({name: info.})
+          this.setState({name: info.username})
+          this.setState({age: info.password})
+        }
+      });
+  };
+
   render() {
+      console.log(this.userinfo())
     return (
       <React.Fragment>
         <Container
@@ -45,7 +64,7 @@ export class UserHome extends Component {
               />
             </Grid>
             <Grid item xs={4}>
-              <h1>{this.props.match.params.id}</h1>
+              <h1>{this.state.name} + {this.state.age}</h1>
             </Grid>
           </Grid>
           {/* <Grid container>

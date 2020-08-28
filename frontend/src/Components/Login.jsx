@@ -39,7 +39,7 @@ export class Login extends Component {
             //window.location.href = "http://localhost:8080/hieu/all";
             this.setState({ showSuccessMessage: true });
             this.setState({ hasLoginFailed: false });
-            this.setState({redirect: "UserHome"})
+            this.setState({redirect: res})
             console.log(res);
           } else {
             this.setState({ hasLoginFailed: true });
@@ -51,7 +51,7 @@ export class Login extends Component {
 
   render() {
     if(this.state.redirect !== ""){
-      return <Redirect to={this.state.redirect} />;
+      return <Redirect to={`/user/${this.state.redirect}`}/>;
     }
     return (
       <Container>
